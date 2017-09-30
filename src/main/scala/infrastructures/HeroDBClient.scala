@@ -11,7 +11,8 @@ class HeroDBClient {
   private val db = new DynamoDB(Regions.AP_NORTHEAST_1)
   private val table = db.getTable("heroes")
 
-  def findAll: Heroes = Heroes(table.scan().toList.map(HeroConverter.toHero))
+  def findAll: Heroes = Heroes(table.scan().toList.map(x => HeroConverter.toHero(x)))
+//  def findAll: Heroes = Heroes(table.scan().toList.map(HeroConverter.toHero)
 }
 
 object HeroDBClient {
