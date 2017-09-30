@@ -13,7 +13,7 @@ case class Heroes(
 }
 
 case class Hero(
-                 @BeanProperty var id: Int,
+                 @BeanProperty var id: Long,
                  @BeanProperty var name: String
                ) {
   def this() = this(

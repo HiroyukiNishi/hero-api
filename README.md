@@ -9,3 +9,6 @@ aws lambda create-function \
  --runtime java8 \
  --timeout 15 \
  --memory-size 512
+
+## JAR??????
+sbt assembly
