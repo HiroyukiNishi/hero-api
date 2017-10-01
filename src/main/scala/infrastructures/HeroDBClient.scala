@@ -1,7 +1,7 @@
 package infrastructures
 
 import com.amazonaws.regions.Regions
-import com.amazonaws.services.dynamodbv2.document.{DynamoDB, Item}
+import com.amazonaws.services.dynamodbv2.document.{DynamoDB, Item, PrimaryKey}
 import domains.{Hero, Heroes}
 import infrastructures.HeroDBClient.{AttributeName, HeroConverter}
 
@@ -14,7 +14,7 @@ class HeroDBClient {
 //  def findAll: Heroes = Heroes(table.scan().toList.map(x => HeroConverter.toHero(x)))
   def findAll: Heroes = Heroes(table.scan().toList.map(HeroConverter.toHero))
   def create(hero: Hero): Unit =  table.putItem(new Item().withPrimaryKey(AttributeName.Id, hero.id).withString(AttributeName.Name, hero.name))
-
+  def delete(id: Int): Unit = table.deleteItem(new PrimaryKey("id", Int.box(id)))
 }
 
 object HeroDBClient {
