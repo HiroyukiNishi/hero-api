@@ -6,8 +6,7 @@ import infrastructures.HeroDBClient
 trait DeleteHeroComponent extends RequestHandler[DeleteHeroRequest, Unit] {
   val client: HeroDBClient
 
-  override def handleRequest(input: DeleteHeroRequest, context: Context): Unit =
-    client.delete(input.id.toInt)
+  override def handleRequest(input: DeleteHeroRequest, context: Context): Unit =  client.delete(input.id.toInt)
 }
 
 class DeleteHeroController extends DeleteHeroComponent {
